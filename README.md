@@ -13,3 +13,9 @@ Goals:
 - Balance based on profile SR, would like to support handling smurfs, manually entering information, detecting unbalance based on wins/losses
 - SR modifiers for drunk folks.
 - Track wins/losses so players aren't just winning/losing all session.
+
+
+Credits:
+Overwatch Party by SunnyDaze
+[OWCustomBalancer by l33t m3at](https://github.com/adminimusRU/OWcustomBalancer)
+[Stats data by OWAPI by Fuyukai](https://github.com/Fuyukai/OWAPI)
