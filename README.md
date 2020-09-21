@@ -17,5 +17,7 @@ Goals:
 
 Credits:
 Overwatch Party by SunnyDaze
+
 [OWCustomBalancer by l33t m3at](https://github.com/adminimusRU/OWcustomBalancer)
+
 [Stats data by OWAPI by Fuyukai](https://github.com/Fuyukai/OWAPI)
