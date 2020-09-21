@@ -15,7 +15,7 @@ Goals:
 - Track wins/losses so players aren't just winning/losing all session.
 
 
-Credits:
+### Credits:
 Overwatch Party by SunnyDaze
 
 [OWCustomBalancer by l33t m3at](https://github.com/adminimusRU/OWcustomBalancer)
