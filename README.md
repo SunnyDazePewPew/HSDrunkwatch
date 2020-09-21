@@ -2,6 +2,8 @@
 
 Run overwatch 6v6 customs with a large group of friends (12+) more easily.
 
+https://sunnydazepewpew.github.io/OverwatchParty/
+
 Goals:
 - Track who has/hasn't had a turn. Store previous games teams into spreadsheet.
 - Track which team won the game/game time to help balance.
