@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-<title>OW Custom game balancer</title>
+<title>Overwatch Party</title>
 <meta name="description" content="Overwatch custom game balancer">
 <link rel="stylesheet" href="style.css">
 
@@ -15,6 +15,7 @@
 <script src="stats_updater.js"></script>
 <script src="import_export.js"></script>
 <script src="ui.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 <script src="init.js" defer></script>
 
@@ -22,68 +23,19 @@
 
 <body>
 
-<div class="page-title">Overwatch custom game balancer</div>
-<div class="copyright">2017-2019 by <a href="https://github.com/adminimusRU">l33t m3at</a> | Stats data by <a href="https://github.com/SunDwarf/OWAPI">OWAPI</a></div>
+<div class="page-title"><i class="fa fa-beer" aria-hidden="true"></i> Overwatch Party</div>
+<div class="copyright">Overwatch Party by <a href="https://github.com/SunnyDazePewPew">SunnyDaze</a> | OW Balancer by <a href="https://github.com/adminimusRU">l33t m3at</a> | Stats data by <a href="https://github.com/SunDwarf/OWAPI">OWAPI</a></div>
+<hr>
+<br/>
 <br/>
 
-<br/>
-<span style="color: green; text-shadow: 0 0 3px green; font: bold 22pt sans-serif; vertical-align: sub;">+</span>
-<input id="new_player_id" name="new_player_id" type="text" size=35 placeholder="BattleTag" value="" onkeyup="new_player_keyup(event);"/> 
-<button onclick="add_player_click();" id="add_btn" >Add player</button>
-<br/>
-<br/>
 
 <div class="table workspace">
 	<div class="row">
-		<div class="cell workspace-cell">
-			<!-- lobby -->
-			
-			<div class="team-toolbar">
-				<input title="Clear lobby" type="button" class="team_btn" onclick="clear_lobby();" value=" X "/>
-				<input title="Import lobby" id="import_lobby_btn" type="button" class="team_btn" onclick="import_lobby_dlg_open();" value="Import"/>
-				<input title="Export lobby" type="button" class="team_btn" onclick="export_lobby_dlg_open();" value="Export"/>
-				
-				<div class="dropdown" style="float:right;">
-					<button class="team_btn dropbtn">&uarr;&darr; Sort &#x25BC;</button>
-					<div class="dropdown-content">
-						<div onclick="sort_lobby('display_name', this);">by name</div>
-						<div onclick="sort_lobby('sr', this);">by SR</div>
-						<div onclick="sort_lobby('class', this);">by class</div>
-						<div onclick="sort_lobby('level', this);">by level</div>
-						<div onclick="sort_lobby('checkin', this);">by check-in</div>						
-						<div onclick="shuffle_lobby();">shuffle</div>
-					</div>
-				</div>
-			</div>
-			
-			<div>
-			<span class="team-title">Lobby</span>
-			</div>
-			
-			<span id="lobby_count">0</span> players<br/>
-			
-			<div style="display: flex; align-items: baseline">
-				<label for="lobby_filter">Filter: &nbsp;</label>
-				<input id="lobby_filter" class="filter" type="text" size=35 autocomplete="off" placeholder="player name or battletag" value="" oninput="on_lobby_filter_change();"/> 
-				<span onclick="lobby_filter_clear();" style="cursor: default;" title="Clear filter" alt="Clear filter"> &#9003; </span>
-			</div>
-			
-			<div class="lobby-container">
-				<div class="table team" id="lobby">
 
-				</div>
-			</div>
-			
-			<br/>
-			<div title="Drop player here to delete" class="trashcan" id="trashcan" ondrop="player_drop(event)" ondragover="player_allowDrop(event)">				
-				&#9760; Delete player (drop here)
-			</div>
-		</div>
 		
 		
-		<div class="cell" style="width: 5em">
-		<!-- spacer -->
-		</div>
+
 		
 		
 		<div class="cell team-cell">
@@ -101,12 +53,12 @@
 			<input id="team1_name" type="text" class="team-title" value="Team 1" autocomplete="off" onchange="save_team_name(this);">
 			</div>
 			
-			<span id="team1_sr">0</span> average SR<br/>
 			
-			<div class="table team" id="team1" style="background-color: DodgerBlue;">
+			
+			<div class="table team" id="team1">
 				<!-- team 1 players -->
 			</div>
-			
+			<span id="team1_sr">0</span> average SR<br/>
 			<br/>
 			<div >
 				<input class="big-checkbox" type="checkbox" id="role_lock_enabled" onchange="role_lock_changed();">
@@ -160,18 +112,12 @@
 			<div>
 			<input id="team2_name" type="text" class="team-title" value="Team 2" autocomplete="off" onchange="save_team_name(this);">
 			</div>
-		
-			<span id="team2_sr">0</span> average SR<br/>
-			
-			<div class="table team" id="team2" style="background-color: tomato;">
+			<div class="table team" id="team2">
 				<!-- team 2 players -->
 			</div>
-			
+			<span id="team2_sr">0</span> average SR<br/>
 			<br/>
-			
 			<div >
-				
-			
 				<div style="display: flex">
 					<button class="medium-btn" id="update_active_stats_btn" onclick="update_active_stats();" value="" title="Update stats for active players">&#8635; Update <br/> active players</button>
 				
@@ -201,7 +147,56 @@
 		<div class="cell" style="width: 5em;">
 		<!-- spacer -->
 		</div>
-		
+				<div class="cell workspace-cell">
+			<!-- lobby -->
+			
+			<div class="team-toolbar">
+				<input title="Clear lobby" type="button" class="team_btn" onclick="clear_lobby();" value=" X "/>
+				<input title="Import lobby" id="import_lobby_btn" type="button" class="team_btn" onclick="import_lobby_dlg_open();" value="Import"/>
+				<input title="Export lobby" type="button" class="team_btn" onclick="export_lobby_dlg_open();" value="Export"/>
+				
+				<div class="dropdown" style="float:right;">
+					<button class="team_btn dropbtn">&uarr;&darr; Sort &#x25BC;</button>
+					<div class="dropdown-content">
+						<div onclick="sort_lobby('display_name', this);">by name</div>
+						<div onclick="sort_lobby('sr', this);">by SR</div>
+						<div onclick="sort_lobby('class', this);">by class</div>
+						<div onclick="sort_lobby('level', this);">by level</div>
+						<div onclick="sort_lobby('checkin', this);">by check-in</div>						
+						<div onclick="shuffle_lobby();">shuffle</div>
+					</div>
+				</div>
+			</div>
+			
+			<div>
+			<span class="team-title">Spectators</span>
+			</div>
+			<div style="display: flex; align-items: baseline">
+				<label for="lobby_filter">Search: &nbsp;</label>
+				<input id="lobby_filter" class="filter" type="text" size=35 autocomplete="off" placeholder="player name or battletag" value="" oninput="on_lobby_filter_change();"/> 
+				<span onclick="lobby_filter_clear();" style="cursor: default;" title="Clear filter" alt="Clear filter"> &#9003; </span>
+			</div>
+			<div class="lobby-container">
+				<div class="table team" id="lobby">
+
+				</div>
+			<span id="lobby_count">0</span> players<br/>
+			</div>
+			<span style="color: lightgreen; font: bold 22pt sans-serif; vertical-align: sub;">+</span>
+<input id="new_player_id" name="new_player_id" type="text" size=35 placeholder="BattleTag" value="" onkeyup="new_player_keyup(event);"/> 
+<button onclick="add_player_click();" id="add_btn" >Add player</button>
+<br/>
+<br/>
+			<br/>
+			<div title="Drop player here to delete" class="trashcan" id="trashcan" ondrop="player_drop(event)" ondragover="player_allowDrop(event)">				
+				&#9760; Delete player (drop here)
+			</div>
+		</div>
+
+		<div class="cell" style="width: 5em">
+		<!-- spacer -->
+		</div>
+
 		<div class="cell" style="width: 20em;">
 			<fieldset style="text-align: center;">
 				<legend>Check-in</legend>

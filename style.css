@@ -5,16 +5,38 @@ html {
 body {
 	margin: 0.5em;
 	height: 95%;
+	font-family: sans-serif;
+	background-color: rgb(112,128,144);
 }
 
 input[type="text"] {
 	border: 1px solid;
 }
 
+/*Blue ===============================================*/ 
+#team1 {
+	background-color: rgb(37,62,119);
+	border-right: solid rgb(82,191,234);
+}
+#team1_sr {
+	color: white;
+}
+
+/*Red ===============================================*/ 
+#team2 {
+	background-color: rgb(122,27,47);
+	border-left: solid rgb(201,25,53);
+}
+
+#team2_sr {
+	color: white;
+}
+
 .page-title {
 	font-size: 26pt;
 	display: inline-block;
 	padding-bottom: 0.3em;
+	color: white;
 }
 
 .copyright {
@@ -31,13 +53,13 @@ button[id="add_btn"] {
 }
 
 .team-title {
+	background-color: gray;
 	font-size: 20pt;
-	border: 1px solid white !important;
+	border: 0px solid black !important;
 	width: 100%;
-}
-
-input.team-title:hover {
-	border: 1px solid gray !important;
+	padding: .25em;
+	color: white;
+	margin: 0px 0px 5px 0px;
 }
 
 .table {
